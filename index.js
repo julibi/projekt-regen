@@ -10,7 +10,7 @@ const myPort = process.env.PORT || 5000;
 app.listen(myPort, () => console.log('webhook is listening', myPort));
 
 app.get('/', (req, res) => {
-  res.send("Yes, so this is the root page...");
+  res.send("THIS IS THE DEPLOYMENT SERVER, BAE");
 });
 
 app.post('/webhook', (req, res) => {  
