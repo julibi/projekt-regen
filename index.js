@@ -35,13 +35,13 @@ app.post('/webhook', (req, res) => {
 });
 
 app.get('/', () => {
-  res.send('Yes, so this is the root page...');
+  res.send("Yes, so this is the root page...");
 });
 
 // Adds support for GET requests to our webhook
 app.get('/webhook', (req, res) => {
   // Your verify token. Should be a random string.
-  let verifyToken = process.env.ACCESS_TOKEN;
+  let verifyToken = process.env.VERIFY_TOKEN;
 
   // Parse the query params
   let mode = req.query['hub.mode'];
