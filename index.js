@@ -25,6 +25,10 @@ app.post('/webhook', (req, res) => {
       // will only ever contain one message, so we get index 0
       let webhook_event = entry.messaging[0];
       console.log(webhook_event);
+
+      // Get the sender PSID
+      let sender_psid = webhook_event.sender.id;
+      console.log('Sender PSID: ' + sender_psid);
     });
 
     res.status(200).send('EVENT_RECEIVED');
