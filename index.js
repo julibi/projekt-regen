@@ -4,11 +4,16 @@
 const
   express = require('express'),
   bodyParser = require('body-parser'),
+  request = require('request'),
   app = express().use(bodyParser.json()); // creates express http server
 
 // Sets server port and logs message on success
 const myPort = process.env.PORT || 5000;
 app.listen(myPort, () => console.log('webhook is listening', myPort));
+
+app.get('/', (req, res) => {
+  res.send("Yes, so this is the root page...");
+});
 
 // Creates the endpoint for our webhook 
 app.post('/webhook', (req, res) => {  
@@ -34,10 +39,6 @@ app.post('/webhook', (req, res) => {
 
 });
 
-app.get('/', () => {
-  res.send("Yes, so this is the root page...");
-});
-
 // Adds support for GET requests to our webhook
 app.get('/webhook', (req, res) => {
   // Your verify token. Should be a random string.
@@ -47,7 +48,7 @@ app.get('/webhook', (req, res) => {
   let mode = req.query['hub.mode'];
   let token = req.query['hub.verify_token'];
   let challenge = req.query['hub.challenge'];
-    
+  
   // Checks if a token and mode is in the query string of the request
   if (mode && token) {
   
