@@ -10,7 +10,19 @@ const myPort = process.env.PORT || 5000;
 app.listen(myPort, () => console.log('webhook is listening', myPort));
 
 app.get('/', (req, res) => {
-  res.json({"foo": "bar"});
+  res.json({
+    "entry": [
+      {"message": "This is test number 1"},
+      {"message": "This is test number 2"},
+      {"message": "This is test number 3"},
+      {"message": "This is test number 4"},
+      {"message": "This is test number 5"},
+      {"message": "This is test number 6"},
+      {"message": "This is test number 7"},
+      {"message": "This is test number 8"},
+      {"message": "This is test number 9"}
+    ]
+  });
 });
 
 app.post('/webhook', (req, res) => {  
