@@ -4,6 +4,7 @@ const
   express = require('express'),
   bodyParser = require('body-parser'),
   request = require('request'),
+  fetch = require('node-fetch'),
   app = express().use(bodyParser.json()); // creates express http server
 const myPort = process.env.PORT || 5000;
 
@@ -88,6 +89,10 @@ function handleMessage(sender_psid, received_message) {
 
   let response;
 
+  fetch('https://polar-castle-29330.herokuapp.com/')
+	  .then(res => res.text())
+	  .then(body => console.log(body));
+
   // Check if the message contains text
   if (received_message.text === 'starte Projekt regen') {    
     // Create the payload for a basic text message
@@ -96,7 +101,7 @@ function handleMessage(sender_psid, received_message) {
     }
   }  else {
     response = {
-      "text": `You sent the message: "${received_message.text}". Now send me an image!`
+      "text": `You sent the message: "${received_message.text}"`
     }
   }
   
