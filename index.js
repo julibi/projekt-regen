@@ -11,19 +11,7 @@ const myPort = process.env.PORT || 5000;
 app.listen(myPort, () => console.log('webhook is listening', myPort));
 
 app.get('/', (req, res) => {
-  res.json({
-    "entry": [
-      {"message": "This is test number 1"},
-      {"message": "This is test number 2"},
-      {"message": "This is test number 3"},
-      {"message": "This is test number 4"},
-      {"message": "This is test number 5"},
-      {"message": "This is test number 6"},
-      {"message": "This is test number 7"},
-      {"message": "This is test number 8"},
-      {"message": "This is test number 9"}
-    ]
-  });
+  res.json({'text': 'This is the dev server.'});
 });
 
 app.post('/webhook', (req, res) => {  
@@ -89,7 +77,7 @@ function handleMessage(sender_psid, received_message) {
 
   let response;
 
-  fetch('https://polar-castle-29330.herokuapp.com/')
+  fetch('https://vast-gorge-26239.herokuapp.com/')
 	  .then(res => console.log(res.json(), 'hello i just called polar-castle'));
 
   // Check if the message contains text
