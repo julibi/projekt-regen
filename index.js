@@ -10,12 +10,13 @@ const myPort = process.env.PORT || 5000;
 app.listen(myPort, () => console.log('webhook is listening', myPort));
 
 app.get('/', (req, res) => {
-  res.send("THIS IS THE DEPLOYMENT SERVER, BAE");
+  res.json({"foo": "bar"});
 });
 
 app.post('/webhook', (req, res) => {  
  
   let body = req.body;
+  console.log(body);
 
   // Checks this is an event from a page subscription
   if (body.object === 'page') {
@@ -76,13 +77,16 @@ function handleMessage(sender_psid, received_message) {
   let response;
 
   // Check if the message contains text
-  if (received_message.text) {    
-
+  if (received_message.text === 'starte Projekt regen') {    
     // Create the payload for a basic text message
     response = {
       "text": `You sent the message: "${received_message.text}". Now send me an image!`
     }
-  }  
+  }  else {
+    response = {
+      "text": `You sent the message: "${received_message.text}". Now send me an image!`
+    }
+  }
   
   // Sends the response message
   callSendAPI(sender_psid, response);    
