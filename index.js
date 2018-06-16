@@ -91,7 +91,7 @@ function handleMessage(sender_psid, received_message) {
 
   fetch('https://polar-castle-29330.herokuapp.com/')
 	  .then(res => res.text())
-	  .then(body => console.log(body));
+	  .then(body => console.log('hello i just called polar-castle'));
 
   // Check if the message contains text
   if (received_message.text === 'starte Projekt regen') {    
