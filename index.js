@@ -8,13 +8,9 @@ const
   app = express().use(bodyParser.json()); // creates express http server
 const myPort = process.env.PORT || 5000;
 
-app.listen(myPort, () => console.log('webhook is listening', myPort));
-
 app.get('/', (req, res) => {
   res.json({'text': 'This is the dev server.'});
 });
-
-console.log(process.env.PAGE_ACCESS_TOKEN);
 
 app.post('/webhook', (req, res) => {  
   console.log('This is app.post/webhook...');
@@ -168,3 +164,5 @@ function handleMessage(sender_psid, received_message) {
   // Send the response message
   callSendAPI(sender_psid, response);    
 }
+
+app.listen(myPort, () => console.log('webhook is listening', myPort));
