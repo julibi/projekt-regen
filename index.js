@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 console.log(process.env.PAGE_ACCESS_TOKEN);
 
 app.post('/webhook', (req, res) => {  
- 
+  console.log('This is app.post/webhook...');
   let body = req.body;
   // console.log(body);
 
