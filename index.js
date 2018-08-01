@@ -14,6 +14,8 @@ app.get('/', (req, res) => {
   res.json({'text': 'This is the dev server.'});
 });
 
+console.log(process.env.PAGE_ACCESS_TOKEN);
+
 app.post('/webhook', (req, res) => {  
  
   let body = req.body;
